@@ -4,7 +4,7 @@ import images
 #from listafornitori.view.VistaListaFornitori import VistaListaFornitori
 #from listaportate.view.GUI_ListaPortate import GUI_ListaPortate
 #from listaordini.views.VistaListaOrdine import VistaListaOrdini
-#from listadipendenti.views.GUI_ListaDipendenti import VistaListaDipendenti
+from listadipendenti.views.GUI_ListaDipendenti import VistaListaDipendenti
 #from listaprenotazioni.views.VistaListaPrenotazioni import VistaListaPrenotazioni
 #from listaclienti.views.VistaListaClienti import VistaListaClienti
 
@@ -197,7 +197,7 @@ class Home(QWidget):
                                             "QPushButton#Button_Fornitori:hover {background-color:      #ffe066;}\n"
                                             "")
         self.Button_Fornitori.setObjectName("Button_Fornitori")
-        #self.Button_Dipendenti.clicked.connect(self.go_lista_dipendenti)
+        self.Button_Dipendenti.clicked.connect(self.go_lista_dipendenti)
         #self.Button_Menu.clicked.connect(self.go_lista_portate)
        # self.Button_Fornitori.clicked.connect(self.go_lista_fornitori)
         #self.Button_Ordini.clicked.connect(self.go_lista_ordini)
@@ -218,9 +218,9 @@ class Home(QWidget):
 
 
 
-    #def go_lista_dipendenti(self):
-     #   self.vista_lista_dipendenti = VistaListaDipendenti()
-      #  self.vista_lista_dipendenti.show()
+    def go_lista_dipendenti(self):
+        self.vista_lista_dipendenti = VistaListaDipendenti()
+        self.vista_lista_dipendenti.show()
 
     #def go_lista_portate(self):
      #   self.vista_lista_portate= GUI_ListaPortate()
