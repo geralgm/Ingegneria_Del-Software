@@ -56,7 +56,18 @@ class VistaListaFornitori(QWidget):
         self.pushButton_nuovo.clicked.connect(self.show_inserisci_fornitore)
         self.verticalLayout_2.addWidget(self.pushButton_nuovo)
         self.pushButton_nuovo.setStyleSheet("QPushButton {\n""   background-color: rgb(26, 108, 218);\n""   border-width: 2px;\n""   border-radius: 10px;\n""   font: bold 12px;\n""   padding: 6px;\n""   color: white;\n""}")
+
+
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.pushButton_Home = QtWidgets.QPushButton(self)
+        self.pushButton_Home.setObjectName("pushButton_Home")
+        self.pushButton_Home.clicked.connect(self.close)
+        self.verticalLayout_2.addWidget(self.pushButton_Home)
+        self.pushButton_Home.setStyleSheet(
+            "QPushButton {\n""   background-color: rgb(26, 108, 218);\n""   border-width: 2px;\n""   border-radius: 10px;\n""   font: bold 12px;\n""   padding: 6px;\n""   color: white;\n""}")
+
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+
         self.verticalLayout_2.addItem(spacerItem1)
         self.gridLayout.addLayout(self.verticalLayout_2, 5, 7, 1, 1)
         self.lineEdit_cerca = QtWidgets.QLineEdit(self)
@@ -183,6 +194,7 @@ class VistaListaFornitori(QWidget):
         #imposto il testo degli oggetti dell'interfaccia
         self.pushButton_apri.setText(_translate("Form", "Apri"))
         self.pushButton_nuovo.setText(_translate("Form", "Nuovo"))
+        self.pushButton_Home.setText(_translate("Form", "Home"))
         self.pushButton_stato1.setText(_translate("Form", "Standard"))
         self.pushButton_stato2.setText(_translate("Form", "Premium"))
         self.pushButton_all.setText(_translate("Form", "All"))
@@ -195,7 +207,7 @@ class VistaListaFornitori(QWidget):
         item = self.tableWidget.horizontalHeaderItem(2)
         item.setText(_translate("Form", "Stato"))
         item = self.tableWidget.horizontalHeaderItem(3)
-      #  item.setText(_translate("Form", "Rappresentante"))
+      # item.setText(_translate("Form", "Rappresentante"))
         item = self.tableWidget.horizontalHeaderItem(4)
         item.setText(_translate("Form", "Telefono"))
         item = self.tableWidget.horizontalHeaderItem(5)
