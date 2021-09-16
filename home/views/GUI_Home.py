@@ -9,7 +9,10 @@ from listadipendenti.views.GUI_ListaDipendenti import VistaListaDipendenti
 from listaclienti.views.VistaListaClienti import VistaListaClienti
 
 
+
 class Home(QWidget):
+
+
     def __init__(self, parent=None):
         super(Home, self).__init__(parent)
         self.setObjectName("Home")
