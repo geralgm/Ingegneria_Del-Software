@@ -1,4 +1,5 @@
-from PyQt5.QtCore import QSize
+from PyQt5.QtCore import QSize, QRect
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QPushButton
 
 from dipendente.controller.ControlloreDipendente import ControlloreDipendente
@@ -13,17 +14,23 @@ class VistaDipendente(QWidget):
         self.elimina_dipendente = elimina_dipendente
         self.elimina_callback = elimina_callback
 
-        self.setObjectName("VistaListaDipendenti")
-        self.resize(407, 453)
-        self.setMinimumSize(QSize(407, 453))
-        self.setMaximumSize(QSize(407, 453))
+        self.setObjectName(u"Form")
+        self.resize(400, 600)
+        self.label = QLabel(self)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(0, 0, 400, 600))
+        self.label.setPixmap(QPixmap(u"sfondoDip.jpg"))
+        self.label_2 = QLabel(self)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setGeometry(QRect(110, 20, 161, 151))
+        self.label_2.setPixmap(QPixmap(u"logoDip.png"))
+        self.label_2.setScaledContents(True)
 
-        self.setStyleSheet(u"background-color: rgb(208, 136, 34);")
         self.Button_Elimina = QtWidgets.QPushButton(self)
-        self.Button_Elimina.setGeometry(QtCore.QRect(120, 380, 150, 68))
+        self.Button_Elimina.setGeometry(QtCore.QRect(125, 540, 150, 55))
         self.Button_Elimina.setStyleSheet("QPushButton#Button_Elimina{\n"
                                           "  background-color:#293d3d;\n"
-                                          "  border-radius: 30px;\n"
+                                          "  border-radius: 10px;\n"
                                           "  color: white;\n"
                                           "  padding: 16px 32px;\n"
                                           "  text-align: center;\n"
@@ -48,6 +55,8 @@ class VistaDipendente(QWidget):
         QtCore.QMetaObject.connectSlotsByName(self)
 
         v_layout = QVBoxLayout()
+
+        v_layout.addItem(QSpacerItem(200, 180, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
         label_nome = QLabel(self.controller.get_nome_dipendente() + " " + self.controller.get_cognome_dipendente())
         font_nome = label_nome.font()
