@@ -1,7 +1,9 @@
+from PyQt5.QtCore import QSize, QRect
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QPushButton
 
 from prenotazione.controller.ControllorePrenotazione import ControllorePrenotazione
-
+from PyQt5 import QtCore,QtWidgets
 
 class VistaPrenotazione(QWidget):
     def __init__(self, prenotazione, elimina_prenotazione, elimina_callback, parent=None):
@@ -9,6 +11,16 @@ class VistaPrenotazione(QWidget):
         self.controller = ControllorePrenotazione(prenotazione)
         self.elimina_prenotazione = elimina_prenotazione
         self.elimina_callback = elimina_callback
+
+        self.setObjectName("VistaPrenotazione")
+        self.resize(407, 453)
+        self.setMinimumSize(QSize(407, 453))
+        self.setMaximumSize(QSize(407, 453))
+
+        self.sfondo = QLabel(self)
+        self.sfondo.setObjectName(u"label")
+        self.sfondo.setGeometry(QRect(0, 0, 407, 453))
+        self.sfondo.setPixmap(QPixmap(u"sfondoPrenotazione.jpg"))
 
         v_layout = QVBoxLayout()
 
@@ -32,9 +44,32 @@ class VistaPrenotazione(QWidget):
 
         v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
-        btn_elimina = QPushButton("Elimina")
-        btn_elimina.clicked.connect(self.elimina_prenotazione_click)
-        v_layout.addWidget(btn_elimina)
+        self.Button_Elimina = QtWidgets.QPushButton(self)
+        self.Button_Elimina.setGeometry(QtCore.QRect(120, 380, 150, 68))
+        self.Button_Elimina.setStyleSheet("QPushButton#Button_Elimina{\n"
+                                          "  background-color:#663300;\n"
+                                          "  border-radius: 30px;\n"
+                                          "  color: white;\n"
+                                          "  padding: 16px 32px;\n"
+                                          "  text-align: center;\n"
+                                          "  text-decoration: none;\n"
+                                          "  display: inline-block;\n"
+                                          "  font-size: 16px;\n"
+                                          "  margin: 4px 2px;\n"
+                                          "  transition-duration: 0.4s;\n"
+                                          "  cursor: pointer;\n"
+                                          "}\n"
+                                          "QPushButton#Button_Elimina:pressed{\n"
+                                          " background-color: white; \n"
+                                          "  color: black; \n"
+                                          "  border: 3px solid #4CAF50;\n"
+                                          "}\n"
+                                          "QPushButton#Button_Elimina:hover {background-color:      #ffe066;}\n"
+                                          "")
+        self.Button_Elimina.setObjectName("Button_Elimina")
+        self.Button_Elimina.clicked.connect(self.elimina_prenotazione_click)
+        self.retranslateUi()
+        QtCore.QMetaObject.connectSlotsByName(self)
 
         self.setLayout(v_layout)
         self.setWindowTitle(self.controller.get_nome_cliente_prenotazione())
@@ -50,3 +85,7 @@ class VistaPrenotazione(QWidget):
         self.elimina_prenotazione(self.controller.get_id_prenotazione())
         self.elimina_callback()
         self.close()
+
+    def retranslateUi(self):
+        _translate = QtCore.QCoreApplication.translate
+        self.Button_Elimina.setText(_translate("VistaPrenotazione", "Elimina"))

@@ -88,7 +88,7 @@ class Home(QWidget):
         self.Button_Prenotazioni = QtWidgets.QPushButton(self)
         self.Button_Prenotazioni.setGeometry(QtCore.QRect(400, 250, 250, 100))
         self.Button_Prenotazioni.setStyleSheet("QPushButton#Button_Prenotazioni{\n"
-                                                "  background-color: #663300;\n"
+                                                "  background-color: #804d00;\n"
                                                 "  border-radius: 45px;\n"
                                                 "  color: white;\n"
                                                 "  padding: 16px 32px;\n"
@@ -106,7 +106,7 @@ class Home(QWidget):
                                                 "  border: 2px solid #4CAF50;\n"
                                                 "}\n"
                                                 "\n"
-                                                "QPushButton#Button_Prenotazioni:hover {background-color:     #1f2e2e;}\n"
+                                                "QPushButton#Button_Prenotazioni:hover {background-color:     #ffe066;}\n"
                                                 "\n"
                                                 "\n"
                                                 "\n"
@@ -168,7 +168,7 @@ class Home(QWidget):
         self.Button_Fornitori = QtWidgets.QPushButton(self)
         self.Button_Fornitori.setGeometry(QtCore.QRect(400, 400, 250, 100))
         self.Button_Fornitori.setStyleSheet("QPushButton#Button_Fornitori{\n"
-                                            "  background-color:#804d00;\n"
+                                            "  background-color:#663300;\n"
                                             "  border-radius: 45px;\n"
                                             "  color: white;\n"
                                             "  padding: 16px 32px;\n"
@@ -185,7 +185,7 @@ class Home(QWidget):
                                             "  color: black; \n"
                                             "  border: 2px solid #4CAF50;\n"
                                             "}\n"
-                                            "QPushButton#Button_Fornitori:hover {background-color:      #ffe066;}\n"
+                                            "QPushButton#Button_Fornitori:hover {background-color:      #1f2e2e;}\n"
                                             "")
         self.Button_Fornitori.setObjectName("Button_Fornitori")
 

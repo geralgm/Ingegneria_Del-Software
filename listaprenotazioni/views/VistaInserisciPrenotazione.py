@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QSpacerItem
 
 from prenotazione.model.Prenotazione import Prenotazione
 from PyQt5.QtCore import QSize, QRect
+from PyQt5 import QtCore, QtWidgets
 import images3
 
 class VistaInserisciPrenotazione(QWidget):
@@ -12,21 +13,15 @@ class VistaInserisciPrenotazione(QWidget):
         self.callback = callback
 
         self.setObjectName("VistaInserisciPrenotazione")
-        self.resize(600, 500)
-        self.setMinimumSize(QSize(600, 500))
-        self.setMaximumSize(QSize(600, 500))
+        self.resize(500, 400)
+        self.setMinimumSize(QSize(500, 400))
+        self.setMaximumSize(QSize(500, 400))
 
         self.sfondo = QLabel(self)
         self.sfondo.setObjectName(u"sfondo")
-        self.sfondo.setGeometry(QRect(0, 0, 600, 500))
-        self.sfondo.setPixmap(QPixmap(u":/newPrefix/texture.jpg"))
+        self.sfondo.setGeometry(QRect(0, 0, 500, 400))
+        self.sfondo.setPixmap(QPixmap(u"sfondoInserisciPrenotazione.jpg"))
         self.sfondo.setScaledContents(True)
-
-        #self.LogoDipendente = QLabel(self)
-        #self.LogoDipendente.setObjectName(u"LogoDipendente")
-        #self.LogoDipendente.setGeometry(QRect(200, 10, 141, 131))
-        #self.LogoDipendente.setPixmap(QPixmap(u":/newPrefix/logoDipendente.png"))
-        #self.LogoDipendente.setScaledContents(True)
 
         self.v_layout = QVBoxLayout()
         self.qlines = {}
@@ -36,15 +31,39 @@ class VistaInserisciPrenotazione(QWidget):
         self.add_info_text("email", "Email")
         self.add_info_text("data", "Data Prenotazione")
         self.add_info_text("tavola", "Tavolo Prenotato")
-        #self.resize(600, 500)
+
         self.v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
-        btn_ok = QPushButton("OK")
-        btn_ok.clicked.connect(self.add_prenotazione)
-        self.v_layout.addWidget(btn_ok)
+        self.Button_OK = QtWidgets.QPushButton(self)
+        self.Button_OK.setGeometry(QtCore.QRect(150, 300, 200, 60))
+        self.Button_OK.setStyleSheet("QPushButton#Button_OK{\n"
+                                     "  background-color:#663300;\n"
+                                     "  border-radius: 10px;\n"
+                                     "  color: white;\n"
+                                     "  padding: 16px 32px;\n"
+                                     "  text-align: center;\n"
+                                     "  text-decoration: none;\n"
+                                     "  display: inline-block;\n"
+                                     "  font-size: 16px;\n"
+                                     "  margin: 4px 2px;\n"
+                                     "  transition-duration: 0.4s;\n"
+                                     "  cursor: pointer;\n"
+                                     "}\n"
+                                     "QPushButton#Button_OK:pressed{\n"
+                                     " background-color: white; \n"
+                                     "  color: black; \n"
+                                     "  border: 3px solid #4CAF50;\n"
+                                     "}\n"
+                                     "QPushButton#Button_OK:hover {background-color:      #ffe066;}\n"
+                                     "")
+        self.Button_OK.setObjectName("Button_OK")
+        self.Button_OK.clicked.connect(self.add_prenotazione)
+
+        self.retranslateUi()
+        QtCore.QMetaObject.connectSlotsByName(self)
 
         self.setLayout(self.v_layout)
-        #self.setWindowTitle("Nuovo Dipendente")
+
 
     def add_info_text(self, nome, label):
         self.v_layout.addWidget(QLabel(label))
@@ -67,6 +86,10 @@ class VistaInserisciPrenotazione(QWidget):
             self.qlines["tavola"].text())
 
         )
+
+    def retranslateUi(self):
+        _translate = QtCore.QCoreApplication.translate
+        self.Button_OK.setText(_translate("VistaInserisciPrenotazione", "OK"))
         self.callback()
         self.close()
 

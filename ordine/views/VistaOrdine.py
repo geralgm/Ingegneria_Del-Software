@@ -1,11 +1,11 @@
 import time
 
-from PyQt5.QtCore import QSize
+from PyQt5.QtCore import QSize, QRect
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QPushButton
 
 from ordine.controller.ControllerOrdine import ControllerOrdine
 from PyQt5 import QtCore,QtWidgets
-from ordine.model import Ordine
 
 
 class VistaOrdine(QWidget):
@@ -20,7 +20,10 @@ class VistaOrdine(QWidget):
         self.setMinimumSize(QSize(407, 453))
         self.setMaximumSize(QSize(407, 453))
 
-        self.setStyleSheet(u"background-color: #9fa9a3;")
+        self.sfondo = QLabel(self)
+        self.sfondo.setObjectName(u"label")
+        self.sfondo.setGeometry(QRect(0, 0, 407, 453))
+        self.sfondo.setPixmap(QPixmap(u"sfondoOrdine.jpg"))
 
         self.Button_Elimina = QtWidgets.QPushButton(self)
         self.Button_Elimina.setGeometry(QtCore.QRect(120, 380, 150, 68))

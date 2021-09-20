@@ -1,5 +1,7 @@
+from PyQt5.QtCore import QSize, QRect
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QLineEdit, QLabel, QMessageBox, QPushButton, QSpacerItem, QSizePolicy, QVBoxLayout, QWidget
-
+from PyQt5 import QtCore, QtWidgets
 from ordine.model.Ordine import Ordine
 
 
@@ -9,6 +11,18 @@ class VistaInserisciOrdine(QWidget):
         self.controller = controller
         self.callback = callback
         self.info = {}
+
+        self.setObjectName("VistaInserisciOrdine")
+        self.resize(500, 400)
+        self.setMinimumSize(QSize(500, 400))
+        self.setMaximumSize(QSize(500, 400))
+
+
+        self.sfondo = QLabel(self)
+        self.sfondo.setObjectName(u"sfondo")
+        self.sfondo.setGeometry(QRect(0, 0, 500, 400))
+        self.sfondo.setPixmap(QPixmap(u"texture.jpg"))
+        self.sfondo.setScaledContents(True)
 
         self.v_layout = QVBoxLayout()
         self.qlines = {}
@@ -21,10 +35,33 @@ class VistaInserisciOrdine(QWidget):
 
         self.v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
-        btn_ok = QPushButton("OK")
-        btn_ok.clicked.connect(self.inserisci_ordine)
-        self.v_layout.addWidget(btn_ok)
+        self.Button_OK = QtWidgets.QPushButton(self)
+        self.Button_OK.setGeometry(QtCore.QRect(150, 300, 200, 70))
+        self.Button_OK.setStyleSheet("QPushButton#Button_OK{\n"
+                                          "  background-color:#293d3d;\n"
+                                          "  border-radius: 10px;\n"
+                                          "  color: white;\n"
+                                          "  padding: 16px 32px;\n"
+                                          "  text-align: center;\n"
+                                          "  text-decoration: none;\n"
+                                          "  display: inline-block;\n"
+                                          "  font-size: 16px;\n"
+                                          "  margin: 4px 2px;\n"
+                                          "  transition-duration: 0.4s;\n"
+                                          "  cursor: pointer;\n"
+                                          "}\n"
+                                          "QPushButton#Button_OK:pressed{\n"
+                                          " background-color: white; \n"
+                                          "  color: black; \n"
+                                          "  border: 3px solid #4CAF50;\n"
+                                          "}\n"
+                                          "QPushButton#Button_OK:hover {background-color:      #d1e0e0;}\n"
+                                          "")
+        self.Button_OK.setObjectName("Button_OK")
+        self.Button_OK.clicked.connect(self.inserisci_ordine)
 
+        self.retranslateUi()
+        QtCore.QMetaObject.connectSlotsByName(self)
         self.setLayout(self.v_layout)
         self.setWindowTitle("New")
 
@@ -59,16 +96,9 @@ class VistaInserisciOrdine(QWidget):
             self.qlines["quantita_totale"].text())
         )
 
-
-
-
-       # for value in self.info.values():
-            #if value.text() == "":
-              # QMessageBox.critical(self, 'Inserisci tutte le informazioni richieste', QMessageBox.Ok, QMessageBox.Ok)
-               #return
-
-        #self.controller.aggiungi_ordine(Ordine(cod_fattura, stato, numero_tavola
-        #                                      , data_ordine,importo_totale, quantita_totale))
+    def retranslateUi(self):
+        _translate = QtCore.QCoreApplication.translate
+        self.Button_OK.setText(_translate("VistaInserisciOrdine", "OK"))
 
         self.callback()
         self.close()
