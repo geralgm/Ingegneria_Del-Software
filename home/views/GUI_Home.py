@@ -5,7 +5,7 @@ from listafornitori.view.VistaListaFornitori import VistaListaFornitori
 from listaportate.view.GUI_ListaPortate import GUI_ListaPortate
 #from listaordini.views.VistaListaOrdine import VistaListaOrdini
 from listadipendenti.views.GUI_ListaDipendenti import VistaListaDipendenti
-#from listaprenotazioni.views.VistaListaPrenotazioni import VistaListaPrenotazioni
+from listaprenotazioni.views.VistaListaPrenotazioni import VistaListaPrenotazioni
 from listaclienti.views.VistaListaClienti import VistaListaClienti
 
 
@@ -204,7 +204,7 @@ class Home(QWidget):
         self.Button_Menu.clicked.connect(self.go_lista_portate)
         self.Button_Fornitori.clicked.connect(self.go_lista_fornitori)
         #self.Button_Ordini.clicked.connect(self.go_lista_ordini)
-        #self.Button_Prenotazioni.clicked.connect(self.go_lista_prenotazioni)
+        self.Button_Prenotazioni.clicked.connect(self.go_lista_prenotazioni)
         self.Button_Clienti.clicked.connect(self.go_lista_clienti)
         self.setWindowTitle("Home")
         self.retranslateUi()
@@ -235,3 +235,7 @@ class Home(QWidget):
     def go_lista_fornitori(self):
         self.VistaListaFornitori= VistaListaFornitori()
         self.VistaListaFornitori.showMaximized()
+
+    def go_lista_prenotazioni(self):
+        self.VistaListaPrenotazioni= VistaListaPrenotazioni()
+        self.VistaListaPrenotazioni.showMaximized()
